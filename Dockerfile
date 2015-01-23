@@ -8,7 +8,7 @@ RUN wget -O - http://dl.hhvm.com/conf/hhvm.gpg.key | apt-key add -
 RUN apt-get -y update && apt-get -y upgrade && apt-get install -y hhvm
 
 
-RUN mkdir /work/
+RUN mkdir /etc/work/
 ADD setup.sh /etc/work/setup.sh
 
 ADD service.conf /etc/supervisor/conf.d/service.conf
