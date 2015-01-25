@@ -10,7 +10,7 @@ RUN apt-get -y update && apt-get -y upgrade && apt-get install -y hhvm
 RUN mkdir /etc/work/
 ADD setup.sh /etc/work/setup.sh
 
-ADD service.conf /etc/supervisor/conf.d/service.conf
+ADD nginx.conf /etc/supervisor/conf.d/nginx.conf
 
 WORKDIR /etc/work
 EXPOSE 80
