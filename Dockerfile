@@ -7,11 +7,11 @@ RUN wget -O - http://dl.hhvm.com/conf/hhvm.gpg.key | apt-key add -
 
 RUN apt-get -y update && apt-get -y upgrade && apt-get install -y hhvm
 
-RUN mkdir /etc/work/
-ADD setup.sh /etc/work/setup.sh
+RUN rm /etc/nginx/sites-enabled/default
 
-ADD nginx.conf /etc/supervisor/conf.d/nginx.conf
+ADD www /www/
+ADD service.conf /etc/supervisor/conf.d/service.conf
+ADD sites-enabled /etc/nginx/sites-enabled/
 
-WORKDIR /etc/work
 EXPOSE 80
-CMD ["bash", "setup.sh"]
+CMD ["/usr/bin/supervisord"]
